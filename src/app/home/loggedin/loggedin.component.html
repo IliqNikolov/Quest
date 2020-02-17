@@ -1,0 +1,2 @@
+<app-list (selectedQuest)="QuestSelected($event)" (selectedThisQuest)="SelectThisQuest($event)" #listComponentName (click)="GetListComponent(listComponentName)"></app-list>
+<app-quest-info [quest]="quest" (refreshList)="RefreshList()" (questEndedError)="QuestEndedError()"></app-quest-info>

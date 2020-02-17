@@ -1,0 +1,13 @@
+<div>
+    <a routerLink="/">Quest</a>
+    <div style="text-align: right;" *ngIf="this.user">
+        <span >Hello {{this.user}}</span>
+        <a routerLink="/changepassword"><button>Change Password</button></a>
+        <button (click)="Logout()">Logout</button>
+    </div>
+    <span *ngIf="!this.user">
+        <a routerLink="/register"><button>Register</button></a>
+        <a routerLink="/login"><button>Login</button></a>
+    </span>   
+</div>
+<hr>

@@ -1,0 +1,15 @@
+<h1>Login</h1>
+<form #logingForm="ngForm" (ngSubmit)="Login(logingForm.value)">
+    <div>
+        <label>Username</label>
+        <input required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
+        <div *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters long</div>
+    </div>
+    <div>
+        <label>Password</label>
+        <input required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
+        <div *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters long</div>
+    </div>
+    <div *ngIf="loginFailFlag">Invalid username or password</div>
+    <button [disabled]="logingForm.invalid">Login</button>
+</form>

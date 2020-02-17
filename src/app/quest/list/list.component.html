@@ -1,0 +1,28 @@
+<a routerLink="/create"><button>Create quest</button></a>
+<button (click)="ToggleJoinForm()">Join quest</button>
+<form *ngIf="showJoinForm" #joinForm="ngForm" (ngSubmit)="Join(joinForm.value)">
+    <div>
+        <label>
+            Code
+        </label>    
+        <input required #codeInput="ngModel" ngModel name="Code" type="text">
+        <div *ngIf="codeInput.invalid && codeInput.touched">Please enter a code</div>
+        <div *ngIf="invalidCode">Invalid code</div>
+        <div *ngIf="alreadyJoined">Already joined this quest</div>
+    </div>
+    <button [disabled]="joinForm.invalid">Join</button>
+</form>
+<p>My Quests</p>
+<ul>
+    <li *ngFor="let myQuet of questList.MyQuests">
+    <a href="#" id="{{myQuet.Id}}" (click)="ClickedOnQuest($event)"> {{myQuet.Name}} - {{myQuet.Status}}</a>
+    </li>
+</ul>
+<p>Other Quests</p>
+<ul>
+    <li *ngFor="let notMyQuet of questList.NotMyQuests">
+        <a href="#" id="{{notMyQuet.Id}}" (click)="ClickedOnQuest($event)"> {{notMyQuet.Name}} - {{notMyQuet.Status}}</a>
+    </li>
+</ul>
+
+

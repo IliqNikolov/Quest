@@ -1,0 +1,96 @@
+<form [formGroup]="eventForm" #createEventForm="ngForm" (ngSubmit)="CreateEvent(createEventForm.value)">
+    <div>
+        <label>
+            Quest's name
+        </label>
+        <input required minlength="6" type="text" formControlName="questName">
+        <div *ngIf="questName.invalid && questName.touched">
+            Name must be at least 6 characters long
+        </div>
+    </div>
+    <div>
+        <label>
+            Starting code
+        </label>
+        <input required type="text" formControlName="code">
+        <div *ngIf="code.invalid && code.touched">
+            Code is required
+        </div>
+    </div>
+    <div>
+        <label>
+            Number of cheats
+        </label>
+        <input required min="0" type="number" formControlName="cheats">
+        <div *ngIf="cheats.invalid && cheats.touched">
+            Number of cheats must be a non-negative number
+        </div>
+    </div>
+    <div>
+        <label>
+            Starting location map (optional)
+        </label>
+        <div>
+            <button type="button" (click)="ToggleMap()">{{mapToggleButtonText}}</button>
+            <agm-map *ngIf="showMap" [latitude]="latitude" [longitude]="longitude" lo (mapClick)="MapClick($event)">
+                <agm-marker [latitude]="cursorLat" [longitude]="cursorLon" *ngIf="locationChosen"></agm-marker>
+            </agm-map>           
+        </div>
+    </div>
+    <div>
+        <label>
+            Starting date (optional)
+        </label>
+        <div>
+            <input type="date" formControlName="date">
+        </div>
+    </div>
+    <div>
+
+        <label>
+            Starting time (optional)
+        </label>
+        <div>
+            <input type="time" formControlName="time">
+        </div>
+    </div>
+    <div formArrayName="stages">
+        <hr>
+        <div>
+            Stages (All fields in all stages are required)
+        </div>
+        <div *ngFor="let stage of stageForms.controls; let i=index" [formGroupName]="i">
+            <hr>
+            <div>
+                <label>
+                    Name
+                </label>
+                <input required type="text" formControlName="name">
+            </div>
+            <div>
+                <label>
+                    Description
+                </label>
+                <input required type="" formControlName="description">
+            </div>
+            <div>
+                <label>
+                    Code
+                </label>
+                <input required formControlName="code">
+            </div>
+            <div>
+                <button (click)="deleteStage(i)">Delete</button>
+            </div>
+        </div>
+        <button type="button" (click)="addStage()">Add stage</button>
+        <div *ngIf="stageForms.length==0">
+            At least 1 stage is required
+        </div>
+    </div>
+
+    <button [disabled]="createEventForm.invalid">Create quest</button>
+</form>
+
+{{createEventForm.value | json}}
+

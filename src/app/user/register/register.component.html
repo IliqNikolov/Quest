@@ -1,0 +1,21 @@
+
+<h1>Register</h1>
+<form #regForm="ngForm" (ngSubmit)="Register(regForm.value)">
+    <div>
+        <label>Username</label>
+        <input required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
+        <div *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters long</div>
+        <div *ngIf="usernameAlreadyExistsFlag">Username already exists</div>
+    </div>
+    <div>
+        <label>Password</label>
+        <input required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
+        <div *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters long</div>
+    </div>
+    <div>
+        <label>RePassword</label>
+        <input required minlength="6" #rePasswordInput="ngModel" ngModel name="RePassword" type="password">
+        <div *ngIf="passwordInput.value!=rePasswordInput.value && passwordInput.touched && rePasswordInput.touched">Password does not match</div>
+    </div>
+    <button [disabled]="regForm.invalid || passwordInput.value!=rePasswordInput.value">Register</button>
+</form>

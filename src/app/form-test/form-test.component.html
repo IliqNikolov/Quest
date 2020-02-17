@@ -1,0 +1,37 @@
+<form [formGroup]="myForm">
+    <div>
+        <label>
+            Text
+        </label>
+        <input formControlName="text">
+    </div>
+    <div formArrayName="events">
+        <div *ngFor="let event of eventForms.controls; let i=index" [formGroupName]="i">
+            <div>
+                <label>
+                    Name
+                </label>
+                <input type="text" formControlName="name">
+            </div>
+            <div>
+                <label>
+                    Description
+                </label>
+                <input type="" formControlName="description">
+            </div>
+            <div>
+                <label>
+                    Code
+                </label>
+                <input formControlName="code">
+            </div>
+            <div>
+                <button (click)="deleteEvent(i)">Delete</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<button (click)="addEvent()">Add event</button>
+
+{{myForm.value | json}}

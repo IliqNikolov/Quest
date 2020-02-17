@@ -1,0 +1,26 @@
+<div *ngIf="scoreList">
+    <div *ngIf="scoreList.List.length>0">
+        <table>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Score
+                </th>
+            </tr>
+            <ng-container *ngFor="let player of scoreList.List">
+                <tr>
+                    <td>
+                        {{player.Name}}
+                    </td>
+                    <td>
+                        {{player.Score}}
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+</div>
+{{scoreList | json}}
