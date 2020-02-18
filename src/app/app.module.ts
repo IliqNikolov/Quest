@@ -22,6 +22,16 @@ import { LoggedinComponent } from './home/loggedin/loggedin.component';
 import { LoggedoutComponent } from './home/loggedout/loggedout.component';
 import { QuestInfoComponent } from './quest/quest-info/quest-info.component';
 import { HightScoreComponent } from './quest/hight-score/hight-score.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestNavComponent } from './test-nav/test-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -40,7 +50,8 @@ import { HightScoreComponent } from './quest/hight-score/hight-score.component';
     LoggedinComponent,
     LoggedoutComponent,
     QuestInfoComponent,
-    HightScoreComponent
+    HightScoreComponent,
+    TestNavComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +61,16 @@ import { HightScoreComponent } from './quest/hight-score/hight-score.component';
       apiKey: 'AIzaSyC9f2dMrxrtkho2J2UYnh0HvRjrjKg0Tbk'
     }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

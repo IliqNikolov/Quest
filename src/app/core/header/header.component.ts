@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Input() 
   user : string
  // user=localStorage.getItem('username')
-  
+  menuChar='&#9776'
   Logout()
   {
     this.userservice.Logout()

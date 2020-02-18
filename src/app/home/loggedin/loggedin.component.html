@@ -1,2 +1,8 @@
-<app-list (selectedQuest)="QuestSelected($event)" (selectedThisQuest)="SelectThisQuest($event)" #listComponentName (click)="GetListComponent(listComponentName)"></app-list>
-<app-quest-info [quest]="quest" (refreshList)="RefreshList()" (questEndedError)="QuestEndedError()"></app-quest-info>
+<mat-tab-group mat-align-tabs="center" [(selectedIndex)]=selectedIndex> 
+    <mat-tab label="Joined Quests">
+        <app-list (selectedQuest)="QuestSelected($event)" (selectedThisQuest)="SelectThisQuest($event)" #listComponentName (click)="GetListComponent(listComponentName)"></app-list>
+    </mat-tab>
+    <mat-tab label="Selected Quest">
+        <app-quest-info [quest]="quest" (refreshList)="RefreshList()" (questEndedError)="QuestEndedError()"></app-quest-info>
+    </mat-tab>
+</mat-tab-group>

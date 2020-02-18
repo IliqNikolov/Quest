@@ -1,13 +1,18 @@
-<div>
-    <a routerLink="/">Quest</a>
-    <div style="text-align: right;" *ngIf="this.user">
-        <span >Hello {{this.user}}</span>
-        <a routerLink="/changepassword"><button>Change Password</button></a>
-        <button (click)="Logout()">Logout</button>
-    </div>
-    <span *ngIf="!this.user">
-        <a routerLink="/register"><button>Register</button></a>
-        <a routerLink="/login"><button>Login</button></a>
-    </span>   
-</div>
-<hr>
+<mat-toolbar color="primary">
+    <span routerLink="/">Quest</span>
+    <span class="add-spaces"></span>
+    <span *ngIf="this.user">Hello {{this.user}}</span>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <div *ngIf="this.user">
+            <button mat-menu-item routerLink="/changepassword">Change Password</button>
+            <button mat-menu-item (click)="Logout()">Logout</button>
+        </div>
+        <span *ngIf="!this.user">
+            <button mat-menu-item routerLink="/register">Register</button>
+            <button mat-menu-item routerLink="/login">Login</button>
+        </span>   
+    </mat-menu>
+</mat-toolbar>

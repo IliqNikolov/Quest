@@ -15,11 +15,13 @@ export class LoggedinComponent implements OnInit {
 
   constructor(private questService : QuestService,private userService : UserServiceService) { }
 
+  selectedIndex = 0;
   ngOnInit() {
   }
 
   QuestSelected(e)
   {
+    this.changeFocus(1);
     this.questService.GetQuest(e).subscribe((quest : GetQuest) => {      
       this.quest=quest      
    },error=>{
@@ -41,15 +43,18 @@ export class LoggedinComponent implements OnInit {
     this.list.GetQuestList();
   }  
   SelectThisQuest(e)
-  {
-    console.log(e );
-    
+  {  
+    this.changeFocus(1);  
     this.quest=e;
   }
   QuestEndedError()
   {
     this.list.GetQuestList();
+    this.changeFocus(0);
     this.quest=null;
   }
-
+  changeFocus(tar : number)
+  {
+    this.selectedIndex = tar;
+  }
 }

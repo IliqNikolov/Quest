@@ -13,6 +13,7 @@ export class QuestInfoComponent implements OnInit {
   @Input() quest : GetQuest;
   @Output() refreshList = new EventEmitter();
   @Output() questEndedError = new EventEmitter();
+  @Output() changeFocus= new EventEmitter();
   isCodeInValid=false;
   constructor(private questService : QuestService, private userService : UserServiceService) { }
 
