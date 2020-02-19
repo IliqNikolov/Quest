@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   cursorLon;
   locationChosen=false;
   showMap=false;
-  mapToggleButtonText="Add map location"
+  mapToggleButtonText="Add an starting map location"
   noStagesFlag : boolean =false;
 
   MapClick(event)
@@ -39,11 +39,11 @@ export class CreateComponent implements OnInit {
     if(this.showMap)
     {
       this.showMap=false;
-      this.mapToggleButtonText="Add map location"
+      this.mapToggleButtonText="Add an starting map location (optional)"
     }
     else{
       this.showMap=true;
-      this.mapToggleButtonText="Remove map location"
+      this.mapToggleButtonText="Remove the starting map location (optional)"
     }
   }
 
@@ -90,6 +90,10 @@ export class CreateComponent implements OnInit {
     })
     this.stageForms.push(stage)
     this.noStagesFlag=false;
+    setTimeout(() => {
+      this.eventForm.updateValueAndValidity();
+    }, 10);
+    
   }
 
   deleteStage(i)

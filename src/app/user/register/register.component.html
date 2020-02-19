@@ -1,21 +1,30 @@
-
-<h1>Register</h1>
-<form #regForm="ngForm" (ngSubmit)="Register(regForm.value)">
-    <div>
-        <label>Username</label>
-        <input required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
-        <div *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters long</div>
-        <div *ngIf="usernameAlreadyExistsFlag">Username already exists</div>
+<form class="center" #regForm="ngForm" (ngSubmit)="Register(regForm.value)">
+    <h1>Register</h1>
+    <div class="formElement">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your username</mat-label>
+            <input matInput required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
+            <mat-error *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters
+                long</mat-error>
+        </mat-form-field>
     </div>
-    <div>
-        <label>Password</label>
-        <input required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
-        <div *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters long</div>
+    <div class="formElement">
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
+            <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters
+                long</mat-error>
+        </mat-form-field>
     </div>
-    <div>
-        <label>RePassword</label>
-        <input required minlength="6" #rePasswordInput="ngModel" ngModel name="RePassword" type="password">
-        <div *ngIf="passwordInput.value!=rePasswordInput.value && passwordInput.touched && rePasswordInput.touched">Password does not match</div>
+    <div class="formElement">
+        <mat-form-field appearance="fill">
+            <mat-label>RePassword</mat-label>
+            <input matInput required minlength="6" #rePasswordInput="ngModel" ngModel name="RePassword" type="password">
+            <mat-error
+                *ngIf="passwordInput.value!=rePasswordInput.value && passwordInput.touched && rePasswordInput.touched">
+                Password does not match</mat-error>
+        </mat-form-field>
     </div>
-    <button [disabled]="regForm.invalid || passwordInput.value!=rePasswordInput.value">Register</button>
+    <mat-error *ngIf="usernameAlreadyExistsFlag">Username already exists</mat-error>
+    <button mat-raised-button color="primary" [disabled]="regForm.invalid || passwordInput.value!=rePasswordInput.value">Register</button>
 </form>

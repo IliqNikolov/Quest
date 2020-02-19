@@ -1,4 +1,4 @@
-<div *ngIf="quest">
+<div class="center"*ngIf="quest">
     <h1>
         {{quest.QuestName}} ({{quest.Status}})
     </h1>
@@ -6,9 +6,9 @@
         Completed
     </h3>
     <div *ngIf="quest.IsOwner">
-        <button *ngIf="quest.Status=='Not Started'" (click)="Start()">Start</button>
-        <button *ngIf="quest.Status=='Started'" (click)="End()">End</button>
-        <button (click)="Delete()">Delete</button>
+        <button mat-raised-button color="primary" *ngIf="quest.Status=='Not Started'" (click)="Start()">Start</button>
+        <button mat-raised-button color="primary" *ngIf="quest.Status=='Started'" (click)="End()">End</button>
+        <button mat-raised-button color="primary" (click)="Delete()">Delete</button>
         <div>
             Code : {{quest.Code}}
         </div>
@@ -23,15 +23,15 @@
                 <div *ngIf="enterCodeForm.invalid">Code is required</div>
                 <div *ngIf="isCodeInValid">Invalid code</div>
             </div>
-            <button [disabled]="enterCodeForm.invalid">Enter</button>
+            <button mat-raised-button color="primary" [disabled]="enterCodeForm.invalid">Enter</button>
         </form>
     </div>
     <div>
         <div *ngIf="quest.Cheats>0 && quest.Status=='Started'">
-            <button (click)="Cheat()">Cheat</button>
+            <button mat-raised-button color="primary" (click)="Cheat()">Cheat</button>
         </div>
         <div>
-            <button (click)="Leave()">Leave</button>
+            <button mat-raised-button color="primary" (click)="Leave()">Leave</button>
         </div>
     </div>
     <div>
@@ -46,15 +46,18 @@
         </agm-map>
     </div>
     <div>
-        <input *ngIf="quest.Date" type="date" [disabled]="true" [value]="quest.Date">
+        <input *ngIf="quest.Date" type="date" [disabled]="true" [value]="quest.Date.substr(0,10)">
         <input *ngIf="quest.Time" type="time" [disabled]="true" [value]="quest.Time">
     </div>
-    <div *ngFor="let stage of quest.Stages">
-        <div>
-            {{stage.Name}}
+    <div class="forStages" fxLayout="row" fxLayoutAlign="end end">
+    <mat-vertical-stepper  [linear]="true" *ngIf="quest.Status!='Not Started || quest.IsOwner'">
+        <div *ngFor="let stage of quest.Stages"> 
+        <mat-step label="{{stage.Name}}" [completed]="stage.Description ? 'true' : 'false'" >
             <div *ngIf="stage.Description">
-               {{ stage.Description}}
+                {{ stage.Description}}
             </div>
-        </div>
+        </mat-step>
     </div>
+    </mat-vertical-stepper>
+</div>
 </div>

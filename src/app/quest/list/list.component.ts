@@ -39,7 +39,8 @@ export class ListComponent implements OnInit {
   }
   ClickedOnQuest(e)
   {
-    //console.log(e.target.id);
+    console.log(e.target);
+    
     this.selectedQuest.emit(e.target.id);
   }
 

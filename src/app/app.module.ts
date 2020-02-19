@@ -32,6 +32,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule} from '@angular/material';
+import { MatStepperModule} from '@angular/material/stepper';
+
+
 
 
 @NgModule({
@@ -70,7 +77,12 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatIconModule,
     MatListModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatStepperModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

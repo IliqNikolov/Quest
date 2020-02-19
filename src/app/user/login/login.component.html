@@ -1,15 +1,19 @@
-<h1>Login</h1>
-<form #logingForm="ngForm" (ngSubmit)="Login(logingForm.value)">
-    <div>
-        <label>Username</label>
-        <input required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
-        <div *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters long</div>
+<form class="center" #logingForm="ngForm" (ngSubmit)="Login(logingForm.value)">
+    <h1>Login</h1>
+    <div class="formElement">
+        <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput required minlength="6" #userNameInput="ngModel" ngModel name="Username" type="text">
+        <mat-error *ngIf="userNameInput.invalid && userNameInput.touched">Username must be at least 6 characters long</mat-error>
+        </mat-form-field>
     </div>
-    <div>
-        <label>Password</label>
-        <input required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
-        <div *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters long</div>
+    <div class="formElement">
+        <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput required minlength="6" #passwordInput="ngModel" ngModel name="Password" type="password">
+        <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">Password must be at least 6 characters long</mat-error>
+        </mat-form-field>
     </div>
-    <div *ngIf="loginFailFlag">Invalid username or password</div>
-    <button [disabled]="logingForm.invalid">Login</button>
+    <mat-error *ngIf="loginFailFlag">Invalid username or password</mat-error>
+    <button  mat-raised-button color="primary" [disabled]="logingForm.invalid">Login</button>
 </form>

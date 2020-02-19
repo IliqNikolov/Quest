@@ -17,6 +17,7 @@ export class QuestInfoComponent implements OnInit {
   isCodeInValid=false;
   constructor(private questService : QuestService, private userService : UserServiceService) { }
 
+  test=false;
   ngOnInit() {
   }
   Start()
