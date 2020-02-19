@@ -1,5 +1,9 @@
 # Quest
 
+Quest is a small app focused on creating/organising outdoor quests. It supports basic user authentication, creation and management of quests.
+
+# Project
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
 ## Development server
