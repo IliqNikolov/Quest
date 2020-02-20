@@ -1,4 +1,4 @@
-<div class="center"*ngIf="quest">
+<div class="center" *ngIf="quest">
     <h1>
         {{quest.QuestName}} ({{quest.Status}})
     </h1>
@@ -6,33 +6,42 @@
         Completed
     </h3>
     <div *ngIf="quest.IsOwner">
-        <button mat-raised-button color="primary" *ngIf="quest.Status=='Not Started'" (click)="Start()">Start</button>
-        <button mat-raised-button color="primary" *ngIf="quest.Status=='Started'" (click)="End()">End</button>
-        <button mat-raised-button color="primary" (click)="Delete()">Delete</button>
+        <span class="forButtons">
+            <button mat-raised-button color="primary" *ngIf="quest.Status=='Not Started'"
+                (click)="Start()">Start</button>
+        </span>
+        <span class="forButtons">
+            <button mat-raised-button color="primary" *ngIf="quest.Status=='Started'" (click)="End()">End</button>
+        </span>
+        <span class="forButtons">
+            <button mat-raised-button color="warn" (click)="Delete()">Delete</button>
+        </span>
         <div>
             Code : {{quest.Code}}
         </div>
     </div>
     <div *ngIf="!quest.IsOwner && quest.Cheats>=0 && quest.Status=='Started'">
         <form #enterCodeForm="ngForm" (ngSubmit)="EnderCode(enterCodeForm.value)">
-            <div>
-                <label>
+            <mat-form-field appearance="fill">
+                <mat-label>
                     Enter code
-                </label>
-                <input required #codeInput="ngModel" ngModel name="Code" type="text">
-                <div *ngIf="enterCodeForm.invalid">Code is required</div>
-                <div *ngIf="isCodeInValid">Invalid code</div>
-            </div>
-            <button mat-raised-button color="primary" [disabled]="enterCodeForm.invalid">Enter</button>
+                </mat-label>
+                <input matInput required #codeInput="ngModel" ngModel name="Code" type="text">
+                <mat-error *ngIf="enterCodeForm.invalid">Code is required</mat-error>
+            </mat-form-field>
+            <span class="forButtons">
+                <button mat-raised-button color="primary" [disabled]="enterCodeForm.invalid">Enter</button>
+            </span>
         </form>
+        <mat-error *ngIf="isCodeInValid">Invalid code</mat-error>
     </div>
     <div>
         <div *ngIf="quest.Cheats>0 && quest.Status=='Started'">
-            <button mat-raised-button color="primary" (click)="Cheat()">Cheat</button>
+            <span class="forButtons">
+                <button mat-raised-button color="primary" (click)="Cheat()">Cheat</button>
+            </span>
         </div>
-        <div>
-            <button mat-raised-button color="primary" (click)="Leave()">Leave</button>
-        </div>
+        
     </div>
     <div>
         Number of players : {{quest.PlayerCount}}
@@ -40,7 +49,12 @@
     <div *ngIf="quest.Cheats>=0">
         Cheats : {{quest.Cheats}}
     </div>
-    <div *ngIf="quest.MapLat && quest.MapLon">
+    <div *ngIf="!quest.IsOwner">
+        <span class="forButtons">
+            <button mat-raised-button color="warn" (click)="Leave()">Leave</button>
+        </span>
+    </div>
+    <div class="breakBefor" *ngIf="quest.MapLat && quest.MapLon">
         <agm-map [latitude]="quest.MapLat" [longitude]="quest.MapLon">
             <agm-marker [latitude]="quest.MapLat" [longitude]="quest.MapLon"></agm-marker>
         </agm-map>
@@ -49,15 +63,15 @@
         <input *ngIf="quest.Date" type="date" [disabled]="true" [value]="quest.Date.substr(0,10)">
         <input *ngIf="quest.Time" type="time" [disabled]="true" [value]="quest.Time">
     </div>
-    <div class="forStages" fxLayout="row" fxLayoutAlign="end end">
-    <mat-vertical-stepper  [linear]="true" *ngIf="quest.Status!='Not Started || quest.IsOwner'">
-        <div *ngFor="let stage of quest.Stages"> 
-        <mat-step label="{{stage.Name}}" [completed]="stage.Description ? 'true' : 'false'" >
-            <div *ngIf="stage.Description">
-                {{ stage.Description}}
+    <div>
+        <mat-vertical-stepper [linear]="true" *ngIf="quest.Status!='Not Started || quest.IsOwner'">
+            <div *ngFor="let stage of quest.Stages">
+                <mat-step label="{{stage.Name}}" [completed]="stage.Description ? 'true' : 'false'">
+                    <div *ngIf="stage.Description">
+                        {{ stage.Description}}
+                    </div>
+                </mat-step>
             </div>
-        </mat-step>
+        </mat-vertical-stepper>
     </div>
-    </mat-vertical-stepper>
-</div>
 </div>

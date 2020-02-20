@@ -39,8 +39,6 @@ export class ListComponent implements OnInit {
   }
   ClickedOnQuest(e)
   {
-    console.log(e.target);
-    
     this.selectedQuest.emit(e.target.id);
   }
 
@@ -71,7 +69,7 @@ export class ListComponent implements OnInit {
       this.invalidCode=true;
       this.alreadyJoined=false;
      }
-     //console.log(error.error);     
+     console.log(error.error);     
   });
 }
 }

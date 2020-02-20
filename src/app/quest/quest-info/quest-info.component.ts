@@ -13,7 +13,8 @@ export class QuestInfoComponent implements OnInit {
   @Input() quest : GetQuest;
   @Output() refreshList = new EventEmitter();
   @Output() questEndedError = new EventEmitter();
-  @Output() changeFocus= new EventEmitter();
+  @Output() changeFocus = new EventEmitter();
+  @Output() changeQuest = new EventEmitter();
   isCodeInValid=false;
   constructor(private questService : QuestService, private userService : UserServiceService) { }
 
@@ -50,8 +51,8 @@ End()
 
 Delete()
   {
-    this.questService.Delete(this.quest.Id).subscribe(() => {  
-      this.quest=null;
+    this.questService.Delete(this.quest.Id).subscribe(() => {       
+      this.changeQuest.emit(null); 
       this.refreshList.emit();
    },error=>{
      console.log(error.error);
@@ -65,7 +66,7 @@ Delete()
 EnderCode(data)
 {
   this.questService.EnterCode({QuestId:this.quest.Id,Code:data.Code}).subscribe((quest : GetQuest) => {  
-    this.quest=quest;
+    this.changeQuest.emit(quest);
     this.isCodeInValid=false;
  },error=>{
    console.log(error.error);
@@ -87,7 +88,7 @@ EnderCode(data)
 Cheat()
   {
     this.questService.Cheat(this.quest.Id).subscribe((quest : GetQuest) => {  
-      this.quest=quest;
+      this.changeQuest.emit(quest);
    },error=>{
      console.log(error.error);
      if(error.error=="The Quest Has Ended")
@@ -103,7 +104,7 @@ Cheat()
 Leave()
   {
     this.questService.Leave(this.quest.Id).subscribe(() => {  
-      this.quest=null;
+      this.changeQuest.emit(null);
       this.refreshList.emit();
    },error=>{
      console.log(error.error);

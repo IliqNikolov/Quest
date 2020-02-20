@@ -10,7 +10,6 @@ import { ScoreList } from 'src/app/Interfaces/score-list';
 export class HightScoreComponent implements OnInit {
 
   constructor(private questService : QuestService) { }
-
   scoreList : ScoreList
   ngOnInit() {
     this.questService.Score().subscribe((scoreList : ScoreList) => {  

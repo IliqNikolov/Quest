@@ -28,7 +28,6 @@ export class CreateComponent implements OnInit {
 
   MapClick(event)
   {
-    console.log(event);
     this.cursorLat=event.coords.lat;
     this.cursorLon=event.coords.lng;
     this.locationChosen=true;

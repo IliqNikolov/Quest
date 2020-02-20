@@ -1,35 +1,40 @@
-<div class="center">
+<div class="center breakBefor">
     <span class="forButtons">
-        <button class="forButtons" mat-raised-button color="primary" routerLink="/create">Create quest</button>
+        <button mat-raised-button color="primary" routerLink="/create">Create quest</button>
     </span>
     <span class="forButtons">
         <button mat-raised-button color="primary" (click)="ToggleJoinForm()">Join quest</button>
     </span>
-    <form *ngIf="showJoinForm" #joinForm="ngForm" (ngSubmit)="Join(joinForm.value)">
-        <div>
-            <label>
+    <form class="breakBefor" *ngIf="showJoinForm" #joinForm="ngForm" (ngSubmit)="Join(joinForm.value)">
+        <mat-form-field appearance="fill">
+            <mat-label>
                 Code
-            </label>
-            <input required #codeInput="ngModel" ngModel name="Code" type="text">
-            <div *ngIf="codeInput.invalid && codeInput.touched">Please enter a code</div>
-            <div *ngIf="invalidCode">Invalid code</div>
-            <div *ngIf="alreadyJoined">Already joined this quest</div>
-        </div>
-        <button [disabled]="joinForm.invalid">Join</button>
+            </mat-label>
+            <input matInput required #codeInput="ngModel" ngModel name="Code" type="text">
+            <mat-error *ngIf="codeInput.invalid && codeInput.touched">Please enter a code</mat-error>
+        </mat-form-field>
+        <span class="forButtons">
+        <button mat-raised-button color="primary" [disabled]="joinForm.invalid">Join</button>
+        </span>
+        <mat-error *ngIf="invalidCode">Invalid code</mat-error>
+        <mat-error *ngIf="alreadyJoined">Already joined this quest</mat-error>
     </form>
-    <h1>My Quests</h1>
-    <div>
-        <div *ngFor="let myQuet of questList.MyQuests">
-            <button mat-flat-button id="{{myQuet.Id}}" (click)="ClickedOnQuest($event)">
-                <p id="{{myQuet.Id}}">{{myQuet.Name}} - {{myQuet.Status}}
-            </button>
+    <div *ngIf="questList">
+        <div *ngIf="questList?.MyQuests?.length!=0">
+            <h1>My Quests</h1>
+            <div *ngFor="let myQuet of questList.MyQuests">
+                <button mat-flat-button id="{{myQuet.Id}}" (click)="ClickedOnQuest($event)">
+                    <p id="{{myQuet.Id}}">{{myQuet.Name}} - {{myQuet.Status}}
+                </button>
+            </div>
+        </div>
+        <div *ngIf="questList?.NotMyQuests?.length!=0">
+        <h1>Other Quests</h1>
+            <div *ngFor="let notMyQuet of questList.NotMyQuests">
+                <button mat-flat-button id="{{notMyQuet.Id}}" (click)="ClickedOnQuest($event)">
+                    <p id="{{notMyQuet.Id}}">{{notMyQuet.Name}} - {{notMyQuet.Status}}
+                </button>
+            </div>
         </div>
     </div>
-    <h1>Other Quests</h1>
-    <mat-list>
-        <mat-list-item *ngFor="let notMyQuet of questList.NotMyQuests">
-            <a href="#" id="{{notMyQuet.Id}}" (click)="ClickedOnQuest($event)"> {{notMyQuet.Name}} -
-                {{notMyQuet.Status}}</a>
-        </mat-list-item>
-    </mat-list>
 </div>

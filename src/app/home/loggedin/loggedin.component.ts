@@ -9,9 +9,25 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./loggedin.component.scss']
 })
 export class LoggedinComponent implements OnInit {
-
-  quest : GetQuest;
+  private _quest : GetQuest;
+  get quest(): GetQuest
+  {
+    return this._quest;
+  }
+  set quest(val :GetQuest)
+  {
+    if(val)
+    {
+      this.isQuestSelected=true;
+    }
+    else
+    {
+      this.isQuestSelected=false;
+    }
+    this._quest=val;   
+  }
   list;
+  isQuestSelected=false;
 
   constructor(private questService : QuestService,private userService : UserServiceService) { }
 
@@ -40,6 +56,20 @@ export class LoggedinComponent implements OnInit {
   }
   RefreshList()
   {
+    console.log("_____________________");
+    
+    console.log(this.quest);
+    
+    if(this.quest==null)
+    {
+      this.isQuestSelected=false;
+    }
+    else
+    {
+      this.isQuestSelected=true;
+    }
+
+    
     this.list.GetQuestList();
   }  
   SelectThisQuest(e)
@@ -56,5 +86,17 @@ export class LoggedinComponent implements OnInit {
   changeFocus(tar : number)
   {
     this.selectedIndex = tar;
+  }
+  changeQuest(e)
+  {
+    if(e)
+    {
+      this.changeFocus(1);
+    }
+    else
+    {
+      this.changeFocus(0);
+    }
+    this.quest=e;
   }
 }

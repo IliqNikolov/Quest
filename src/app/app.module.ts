@@ -37,6 +37,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material';
 import { MatStepperModule} from '@angular/material/stepper';
+import { TableTestComponent } from './table-test/table-test.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -58,7 +62,8 @@ import { MatStepperModule} from '@angular/material/stepper';
     LoggedoutComponent,
     QuestInfoComponent,
     HightScoreComponent,
-    TestNavComponent
+    TestNavComponent,
+    TableTestComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,10 @@ import { MatStepperModule} from '@angular/material/stepper';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
