@@ -1,4 +1,4 @@
-export interface QuestListElement {
+export interface IQuestListElement {
     Id : string;
     Name : string;
     Status : string;

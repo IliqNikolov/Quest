@@ -1,5 +1,5 @@
-import { ScoreListElement } from './score-list-element';
+import { IScoreListElement } from './score-list-element';
 
-export interface ScoreList {
-    List : ScoreListElement[];
+export interface IScoreList {
+    List : IScoreListElement[];
 }

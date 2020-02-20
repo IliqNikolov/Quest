@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray} from '@angular/forms'
 import { QuestService } from 'src/app/services/quest.service';
-import { Quest } from 'src/app/Interfaces/quest';
+import { IQuest } from 'src/app/Interfaces/quest';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Router } from '@angular/router';
 
@@ -104,7 +104,7 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  CreateEvent(data : Quest)
+  CreateEvent(data : IQuest)
   {
     if(this.showMap)
     {

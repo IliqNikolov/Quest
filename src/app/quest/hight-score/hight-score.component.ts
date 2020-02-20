@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestService } from 'src/app/services/quest.service';
-import { ScoreList } from 'src/app/Interfaces/score-list';
+import { IScoreList } from 'src/app/Interfaces/score-list';
 
 @Component({
   selector: 'app-hight-score',
@@ -10,9 +10,9 @@ import { ScoreList } from 'src/app/Interfaces/score-list';
 export class HightScoreComponent implements OnInit {
 
   constructor(private questService : QuestService) { }
-  scoreList : ScoreList
+  scoreList : IScoreList
   ngOnInit() {
-    this.questService.Score().subscribe((scoreList : ScoreList) => {  
+    this.questService.Score().subscribe((scoreList : IScoreList) => {  
       this.scoreList=scoreList
    },error=>{
      console.log(error);

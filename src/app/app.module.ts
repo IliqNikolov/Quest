@@ -9,13 +9,11 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { TestComponent} from './test/test.component'
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
 import { AgmCoreModule } from '@agm/core';
-import { FormTestComponent } from './form-test/form-test.component';
 import { CreateComponent } from './quest/create/create.component';
 import { ListComponent } from './quest/list/list.component';
 import { LoggedinComponent } from './home/loggedin/loggedin.component';
@@ -23,7 +21,6 @@ import { LoggedoutComponent } from './home/loggedout/loggedout.component';
 import { QuestInfoComponent } from './quest/quest-info/quest-info.component';
 import { HightScoreComponent } from './quest/hight-score/hight-score.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TestNavComponent } from './test-nav/test-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,10 +34,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material';
 import { MatStepperModule} from '@angular/material/stepper';
-import { TableTestComponent } from './table-test/table-test.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HighScoreTableComponent } from './quest/high-score-table/high-score-table.component';
 
 
 
@@ -53,17 +50,14 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    TestComponent,
     ChangePasswordComponent,
-    FormTestComponent,
     CreateComponent,
     ListComponent,
     LoggedinComponent,
     LoggedoutComponent,
     QuestInfoComponent,
     HightScoreComponent,
-    TestNavComponent,
-    TableTestComponent
+    HighScoreTableComponent
   ],
   imports: [
     BrowserModule,

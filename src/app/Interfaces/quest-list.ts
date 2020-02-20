@@ -1,6 +1,6 @@
-import { QuestListElement } from './quest-list-element';
+import { IQuestListElement } from './quest-list-element';
 
-export interface QuestList {
-    MyQuests : QuestListElement[];
-    NotMyQuests : QuestListElement[];
+export interface IQuestList {
+    MyQuests : IQuestListElement[];
+    NotMyQuests : IQuestListElement[];
 }

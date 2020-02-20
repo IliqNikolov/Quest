@@ -1,5 +1,5 @@
-import { ChangePassword } from './change-password';
+import { IChangePassword } from './change-password';
 
-export interface ChangePasswordLong extends ChangePassword {
+export interface IChangePasswordLong extends IChangePassword {
     ReNewPassword : string;
 }

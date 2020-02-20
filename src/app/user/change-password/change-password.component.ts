@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangePasswordLong } from 'src/app/Interfaces/change-password-long';
+import { IChangePasswordLong } from 'src/app/Interfaces/change-password-long';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import {Router} from '@angular/router'; 
 
@@ -14,7 +14,7 @@ export class ChangePasswordComponent implements OnInit {
 
   WrongPasswordFlag :boolean;
 
-  ChangePassword(data : ChangePasswordLong)
+  ChangePassword(data : IChangePasswordLong)
   {
     this.userService.ChagePassword(data).subscribe((resp : any) => {  
       this.router.navigate(['/'])

@@ -1,4 +1,4 @@
-export interface ScoreListElement {
+export interface IScoreListElement {
     Name : string;
     Score : number;
 }

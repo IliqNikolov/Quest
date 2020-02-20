@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestService } from 'src/app/services/quest.service';
-import { GetQuest } from 'src/app/Interfaces/get-quest';
+import { IGetQuest } from 'src/app/Interfaces/get-quest';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./loggedin.component.scss']
 })
 export class LoggedinComponent implements OnInit {
-  private _quest : GetQuest;
-  get quest(): GetQuest
+  private _quest : IGetQuest;
+  get quest(): IGetQuest
   {
     return this._quest;
   }
-  set quest(val :GetQuest)
+  set quest(val :IGetQuest)
   {
     if(val)
     {
@@ -38,7 +38,7 @@ export class LoggedinComponent implements OnInit {
   QuestSelected(e)
   {
     this.changeFocus(1);
-    this.questService.GetQuest(e).subscribe((quest : GetQuest) => {      
+    this.questService.GetQuest(e).subscribe((quest : IGetQuest) => {      
       this.quest=quest      
    },error=>{
      console.log(error);

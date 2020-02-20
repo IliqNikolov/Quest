@@ -1,6 +1,6 @@
-import { GetQuestStage } from './get-quest-stage';
+import { IGetQuestStage } from './get-quest-stage';
 
-export interface GetQuest {
+export interface IGetQuest {
     Id : string;
     IsOwner : boolean;
     PlayerCount : number;
@@ -12,5 +12,5 @@ export interface GetQuest {
     Date? : string;
     Time? :string;
     Status : string;
-    Stages : GetQuestStage[];
+    Stages : IGetQuestStage[];
 }

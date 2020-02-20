@@ -1,6 +1,6 @@
-import { Stage } from './stage';
+import { IStage } from './stage';
 
-export interface Quest {
+export interface IQuest {
     questName :string;
     code :string;
     cheats: number;
@@ -8,5 +8,5 @@ export interface Quest {
     mapLon: number;
     date: string;
     time: string;
-    stages: Stage[];
+    stages: IStage[];
 }

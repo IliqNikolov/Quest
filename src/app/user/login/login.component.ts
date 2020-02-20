@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'; 
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { User } from 'src/app/Interfaces/user';
+import { IUser } from 'src/app/Interfaces/user';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   private loginFailFlag=false;
 
-  Login(data : User)
+  Login(data : IUser)
   {
     let token;
     this.userService.LoginUser(data).subscribe((resp : any) => {

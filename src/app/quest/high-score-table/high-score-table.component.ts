@@ -2,26 +2,24 @@ import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/cor
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { TableTestDataSource, TableTestItem } from './table-test-datasource';
+import { HighScoreTableDataSource, HighScoreTableItem } from './high-score-table-datasource';
 
 @Component({
-  selector: 'app-table-test',
-  templateUrl: './table-test.component.html',
-  styleUrls: ['./table-test.component.scss']
+  selector: 'app-high-score-table',
+  templateUrl: './high-score-table.component.html',
+  styleUrls: ['./high-score-table.component.scss']
 })
-export class TableTestComponent implements AfterViewInit, OnInit {
+export class HighScoreTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<TableTestItem>;
-  dataSource: TableTestDataSource;
+  @ViewChild(MatTable, {static: false}) table: MatTable<HighScoreTableItem>;
+  dataSource: HighScoreTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Score', 'Name'];
   @Input() data
   ngOnInit() {
-    this.dataSource = new TableTestDataSource(this.data.List);
-    console.log(this.data.List);
-    
+    this.dataSource = new HighScoreTableDataSource(this.data.List);
   }
 
   ngAfterViewInit() {

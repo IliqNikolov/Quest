@@ -1,4 +1,4 @@
-export interface GetQuestStage {
+export interface IGetQuestStage {
     Name : string;
     Description? : string;
 }

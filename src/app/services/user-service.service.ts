@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { User } from '../Interfaces/user';
-import { ChangePassword } from '../Interfaces/change-password';
+import { IUser } from '../Interfaces/user';
+import { IChangePassword } from '../Interfaces/change-password';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -15,15 +15,15 @@ export class UserServiceService {
 
   private UserApiUrl : string ="https://localhost:44383/api/User";
 
-  RegisterUser (user : User)
+  RegisterUser (user : IUser)
   {
     return this.http.post(`${this.UserApiUrl}/Register`,user/*,{withCredentials:true}*/);
   }
-  LoginUser(user : User)
+  LoginUser(user : IUser)
   {   
     return this.http.post(`${this.UserApiUrl}/Login`,user/*,{withCredentials:true}*/);
   }
-  ChagePassword(password : ChangePassword)
+  ChagePassword(password : IChangePassword)
   {
     return this.http.post(`${this.UserApiUrl}/Changepassword`,password,{withCredentials:true});
   }

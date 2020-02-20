@@ -1,4 +1,4 @@
-export interface ChangePassword {
+export interface IChangePassword {
     Password : string;
     NewPassword : string;
 }

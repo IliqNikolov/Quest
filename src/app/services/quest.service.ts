@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Quest } from '../Interfaces/quest'
+import { IQuest } from '../Interfaces/quest'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class QuestService {
 
   private QuestApiUrl : string ="https://localhost:44383/api/Quest";
 
-  Create(quest : Quest)
+  Create(quest : IQuest)
   {
     return this.http.post(`${this.QuestApiUrl}/Create`,quest,{withCredentials:true});
   }

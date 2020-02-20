@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { GetQuest } from 'src/app/Interfaces/get-quest';
+import { IGetQuest } from 'src/app/Interfaces/get-quest';
 import { QuestService } from 'src/app/services/quest.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
@@ -10,7 +10,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class QuestInfoComponent implements OnInit {
 
-  @Input() quest : GetQuest;
+  @Input() quest : IGetQuest;
   @Output() refreshList = new EventEmitter();
   @Output() questEndedError = new EventEmitter();
   @Output() changeFocus = new EventEmitter();
@@ -65,7 +65,7 @@ Delete()
 
 EnderCode(data)
 {
-  this.questService.EnterCode({QuestId:this.quest.Id,Code:data.Code}).subscribe((quest : GetQuest) => {  
+  this.questService.EnterCode({QuestId:this.quest.Id,Code:data.Code}).subscribe((quest : IGetQuest) => {  
     this.changeQuest.emit(quest);
     this.isCodeInValid=false;
  },error=>{
@@ -87,7 +87,7 @@ EnderCode(data)
 
 Cheat()
   {
-    this.questService.Cheat(this.quest.Id).subscribe((quest : GetQuest) => {  
+    this.questService.Cheat(this.quest.Id).subscribe((quest : IGetQuest) => {  
       this.changeQuest.emit(quest);
    },error=>{
      console.log(error.error);

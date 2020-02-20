@@ -3,21 +3,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Input } from '@angular/core';
 
 // TODO: Replace this with your own data model type
-export interface TableTestItem {
+export interface HighScoreTableItem {
   Name: string;
   Score: number;
 }
 
 
 /**
- * Data source for the TableTest view. This class should
+ * Data source for the HighScoreTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TableTestDataSource extends DataSource<TableTestItem> {
+export class HighScoreTableDataSource extends DataSource<HighScoreTableItem> {
 
   paginator: MatPaginator;
   sort: MatSort;
@@ -31,7 +30,7 @@ export class TableTestDataSource extends DataSource<TableTestItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<TableTestItem[]> {
+  connect(): Observable<HighScoreTableItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -55,7 +54,7 @@ export class TableTestDataSource extends DataSource<TableTestItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: TableTestItem[]) {
+  private getPagedData(data: HighScoreTableItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -64,7 +63,7 @@ export class TableTestDataSource extends DataSource<TableTestItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: TableTestItem[]) {
+  private getSortedData(data: HighScoreTableItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }

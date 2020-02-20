@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { UserRegistration } from 'src/app/Interfaces/user-registration';
+import { IUserRegistration } from 'src/app/Interfaces/user-registration';
 import {Router} from '@angular/router'; 
 
 
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService : UserServiceService, private router: Router) { }
   private usernameAlreadyExistsFlag=false;
 
-  Register (data : UserRegistration)
+  Register (data : IUserRegistration)
   {
     let token;
     this.userService.RegisterUser(data).subscribe((resp : any) => {

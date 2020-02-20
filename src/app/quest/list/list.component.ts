@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { QuestService } from 'src/app/services/quest.service';
-import { QuestList } from 'src/app/Interfaces/quest-list';
+import { IQuestList } from 'src/app/Interfaces/quest-list';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { GetQuest } from 'src/app/Interfaces/get-quest';
+import { IGetQuest } from 'src/app/Interfaces/get-quest';
 
 @Component({
   selector: 'app-list',
@@ -19,14 +19,14 @@ export class ListComponent implements OnInit {
   alreadyJoined=false;
   constructor(private questService: QuestService, private userService : UserServiceService) { }
 
-  questList = {} as QuestList;
+  questList = {} as IQuestList;
   ngOnInit() {
     this.GetQuestList();
   }
 
   GetQuestList()
   {
-    this.questService.List().subscribe((list : QuestList) => {  
+    this.questService.List().subscribe((list : IQuestList) => {  
       this.questList=list
    },error=>{
      console.log(error);
@@ -49,7 +49,7 @@ export class ListComponent implements OnInit {
 
   Join(data)
   {
-    this.questService.Join(data).subscribe((quest : GetQuest) => {  
+    this.questService.Join(data).subscribe((quest : IGetQuest) => {  
       this.invalidCode=false;
       this.alreadyJoined=false;
       this.GetQuestList();
