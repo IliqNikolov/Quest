@@ -21,7 +21,7 @@
         </div>
     </div>
     <div *ngIf="!quest.IsOwner && quest.Cheats>=0 && quest.Status=='Started'">
-        <form #enterCodeForm="ngForm" (ngSubmit)="EnderCode(enterCodeForm.value)">
+        <form #enterCodeForm="ngForm" (ngSubmit)="EnderCode(enterCodeForm)">
             <mat-form-field appearance="fill">
                 <mat-label>
                     Enter code
@@ -36,7 +36,7 @@
         <mat-error *ngIf="isCodeInValid">Invalid code</mat-error>
     </div>
     <div>
-        <div *ngIf="quest.Cheats>0 && quest.Status=='Started'">
+        <div *ngIf="quest.Cheats>0 && quest.Status=='Started' && !quest.IsOwner">
             <span class="forButtons">
                 <button mat-raised-button color="primary" (click)="Cheat()">Cheat</button>
             </span>

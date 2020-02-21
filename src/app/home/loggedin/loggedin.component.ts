@@ -55,11 +55,7 @@ export class LoggedinComponent implements OnInit {
     this.list=list;
   }
   RefreshList()
-  {
-    console.log("_____________________");
-    
-    console.log(this.quest);
-    
+  {    
     if(this.quest==null)
     {
       this.isQuestSelected=false;

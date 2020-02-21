@@ -20,11 +20,13 @@
         <mat-form-field appearance="fill">
             <mat-label>RePassword</mat-label>
             <input matInput required minlength="6" #rePasswordInput="ngModel" ngModel name="RePassword" type="password">
-            <mat-error
-                *ngIf="passwordInput.value!=rePasswordInput.value && passwordInput.touched && rePasswordInput.touched">
-                Password does not match</mat-error>
+            <mat-error *ngIf="rePasswordInput.invalid && rePasswordInput.touched">RePassword must be at least 6 characters
+                long</mat-error>
         </mat-form-field>
     </div>
+    <mat-error
+                *ngIf="passwordInput.value!=rePasswordInput.value && passwordInput.touched && rePasswordInput.touched">
+                Password does not match</mat-error>
     <mat-error *ngIf="usernameAlreadyExistsFlag">Username already exists</mat-error>
     <button mat-raised-button color="primary" [disabled]="regForm.invalid || passwordInput.value!=rePasswordInput.value">Register</button>
 </form>

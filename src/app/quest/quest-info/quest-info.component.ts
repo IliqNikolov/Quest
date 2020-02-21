@@ -14,7 +14,7 @@ export class QuestInfoComponent implements OnInit {
   @Output() refreshList = new EventEmitter();
   @Output() questEndedError = new EventEmitter();
   @Output() changeFocus = new EventEmitter();
-  @Output() changeQuest = new EventEmitter();
+  @Output() changeQuest = new EventEmitter<IGetQuest>();
   isCodeInValid=false;
   constructor(private questService : QuestService, private userService : UserServiceService) { }
 
@@ -65,7 +65,8 @@ Delete()
 
 EnderCode(data)
 {
-  this.questService.EnterCode({QuestId:this.quest.Id,Code:data.Code}).subscribe((quest : IGetQuest) => {  
+  this.questService.EnterCode({QuestId:this.quest.Id,Code:data.value.Code}).subscribe((quest : IGetQuest) => {  
+    data.resetForm();
     this.changeQuest.emit(quest);
     this.isCodeInValid=false;
  },error=>{
@@ -74,7 +75,7 @@ EnderCode(data)
    {
     this.isCodeInValid=true;
    }
-   if(error.error=="The Quest Has Ended")
+   if(error.error=="The Quest Has Ended" || error.error=="No Quest")
    {
      this.questEndedError.emit();
    }
